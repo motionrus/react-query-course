@@ -1,6 +1,7 @@
 import { GoComment, GoInfo, GoIssueClosed } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { relativeDate } from "../helpers/relativeDate";
+import { useUserData } from "../helpers/useUserData";
 
 export function IssueItem({
   assignee,
@@ -12,6 +13,9 @@ export function IssueItem({
   labels,
   status,
 }) {
+  const assigneeUser = useUserData(assignee);
+  const createdByUser = useUserData(createdBy);
+  console.log(createdByUser);
   return (
     <li>
       <div>
@@ -31,10 +35,12 @@ export function IssueItem({
           ))}
         </span>
         <small>
-          #{number} opened {relativeDate(createdDate)} by {assignee}
+          #{number} opened {relativeDate(createdDate)} by {createdByUser.name}
         </small>
       </div>
-      {Boolean(assignee) && <div>{assignee}</div>}
+      {Boolean(assignee) && (
+        <img src={assigneeUser.profilePictureUrl} className={"assigned-to"} />
+      )}
 
       <span className={"comment-count"}>
         {Boolean(commentCount) && (
