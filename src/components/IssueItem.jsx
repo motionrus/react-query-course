@@ -15,7 +15,7 @@ export function IssueItem({
 }) {
   const assigneeUser = useUserData(assignee);
   const createdByUser = useUserData(createdBy);
-  console.log(createdByUser);
+  const createdByUserString = createdByUser ? `by ${createdByUser}` : "";
   return (
     <li>
       <div>
@@ -35,10 +35,10 @@ export function IssueItem({
           ))}
         </span>
         <small>
-          #{number} opened {relativeDate(createdDate)} by {createdByUser.name}
+          #{number} opened {relativeDate(createdDate)} {createdByUserString}
         </small>
       </div>
-      {Boolean(assignee) && (
+      {Boolean(assigneeUser) && (
         <img src={assigneeUser.profilePictureUrl} className={"assigned-to"} />
       )}
 

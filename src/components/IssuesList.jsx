@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import { IssueItem } from "./IssueItem";
 
@@ -16,7 +15,7 @@ export default function IssuesList() {
           {issuesQuery.data.map((issue) => {
             return (
               <IssueItem
-                key={issue.key}
+                key={issue.id}
                 assignee={issue.assignee}
                 title={issue.title}
                 number={issue.number}
@@ -30,11 +29,6 @@ export default function IssuesList() {
           })}
         </ul>
       )}
-      <ul>
-        <li>
-          <Link to="/issue/1">Issue 1</Link>
-        </li>
-      </ul>
     </div>
   );
 }
