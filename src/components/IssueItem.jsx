@@ -1,7 +1,7 @@
 import { GoComment, GoInfo, GoIssueClosed } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { relativeDate } from "../helpers/relativeDate";
-import { useUserData } from "../helpers/useUserData";
+import { useUserData } from "../api/hooks";
 
 export function IssueItem({
   assignee,
@@ -15,7 +15,7 @@ export function IssueItem({
 }) {
   const assigneeUser = useUserData(assignee);
   const createdByUser = useUserData(createdBy);
-  const createdByUserString = createdByUser ? `by ${createdByUser}` : "";
+  const createdByUserString = createdByUser ? `by ${createdByUser.name}` : "";
   return (
     <li>
       <div>

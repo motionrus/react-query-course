@@ -16,7 +16,10 @@
 
 a {
   color: var(--yellow);
-  font-weight: 600;
+  font-weight: 300;
+}
+.selected {
+  font-weight: 800;
 }
 
 .red {
@@ -106,7 +109,7 @@ button,
   border-radius: 0.25rem;
   border: none;
   padding: 0.5rem 1rem;
-  font-weight: bold;
+  font-weight: 300;
   transition: background 0.1s ease-in-out;
   text-align: center;
   text-decoration: none;

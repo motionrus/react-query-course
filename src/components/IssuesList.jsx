@@ -1,10 +1,8 @@
-import { useQuery } from "react-query";
 import { IssueItem } from "./IssueItem";
+import { useIssueQuery } from "../api/hooks";
 
-export default function IssuesList() {
-  const issuesQuery = useQuery(["issues"], () =>
-    fetch("/api/issues").then((res) => res.json()),
-  );
+export default function IssuesList({ selected }) {
+  const issuesQuery = useIssueQuery({ labels: selected });
   return (
     <div>
       <h1>Issues List</h1>
